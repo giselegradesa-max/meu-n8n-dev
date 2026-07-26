@@ -1,1 +1,18 @@
 github.com/codespaces
+Você verá uma lista chamada "Your codespaces".
+
+Procure pelo nome do seu repositório (ex: ).meu-n8n-dev
+
+Reabrir o Ambiente de Trabalho
+Ao lado do nome do seu repositório, clique no botão ... (Três pontinhos) ou direto no nome dele.
+
+Clique em Abrir no navegador (Abrir no navegador).
+
+Aguarde alguns segundos enquanto a máquina virtual reconecta e abre o editor visual (VS Code).
+Ligar o n8n Novamente
+Assim que o ambiente abrir, o terminal (a tela preta na parte inferior) estará disponível.
+
+Clique na área do terminal.
+
+Digite o mesmo comando de antes e pressione Enter
+npx n8n
