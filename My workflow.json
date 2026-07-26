@@ -1,0 +1,121 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "0a7e0e55-9556-4361-ab78-cb5f90c2be37",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "url": "https://api.open-meteo.com/v1/forecast?latitude=-23.55&longitude=-46.63&current_weather=true",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "603c00b4-9090-4510-8554-4d2672f8b89b",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Captura os dados do clima do nó anterior\nconst clima = $input.first().json.current_weather;\n\n// Cria a mensagem formatada para o seu assistente\nconst mensagem = `\n☀️ *Bom dia! Seu Assistente de Produtividade informa:*\n\n🌡️ *Temperatura Atual:* ${clima.temperature}°C\n💨 *Velocidade do Vento:* ${clima.windspeed} km/h\n\n💡 *Foco do Dia:* Cada pequena automação que você constrói te aproxima do seu objetivo de carreira. Vamos pra cima!\n`;\n\nreturn { mensagem };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "4bbf5521-2a84-455a-9571-87e2d4c022cb",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "={{ $json.mensagem }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        624,
+        0
+      ],
+      "id": "fb503ca0-95be-40af-a139-3f9e7f19e621",
+      "name": "Discord",
+      "webhookId": "57494336-43e6-4a84-acb9-373225fc7cdb",
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "Gt14gEyoDHgxSjp3",
+          "name": "Discord Webhook account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Discord",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "2452f345-b787-4817-9b44-5f881617203e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "a491df0ce38f72c2e798b33e072129f81a626d12fd4da7c194be0b86d653d112"
+  },
+  "nodeGroups": [],
+  "id": "Pd52EWTTOKYGiYHH",
+  "tags": []
+}
