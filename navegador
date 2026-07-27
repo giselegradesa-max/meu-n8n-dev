@@ -1,3 +1,25 @@
+Acesse o seu repositório no GitHub: github.com/seu-usuario/meu-n8n-dev (ou vá na página principal do seu GitHub e clique no seu repositório ).meu-n8n-dev
+
+Clique no botão verde Code.
+
+Clique na aba Codespaces.
+
+Clique no botão + ou em Create codespace no main.
+
+⏳ Aguarde de 1 a 2 minutos enquanto o GitHub prepara uma máquina novinha e limpa para você.
+
+⚡ PASSO 3: Ligar o n8n no Novo Ambiente
+Assim que a tela do VS Code abrir e o terminal (a janela preta) carregar na parte inferior:
+
+Clique sem terminal.
+
+Digite o comando e pressione Enter:
+
+Bash
+npx n8n
+Se o terminal perguntar, digite y é aperte Enter.Need to install the following packages: n8n. Ok to proceed? (y)
+
+Assim que aparecer a notificação azul no canto inferior direito ou a porta na aba Portas / Ports, clique em Open in Browser (Abrir no navegador).5678
 github.com/codespaces
 Você verá uma lista chamada "Your codespaces".
 
